@@ -7,14 +7,17 @@ import { FirstTestComponent } from './first-test/first-test.component';
 import { TestModule } from './test/test.module';
 import { NoteComponent } from './note/note.component';
 import { ToolsComponent } from './tools/tools.component';
-import {MatButtonModule } from '@angular/material/button';
-import { MatIconModule} from '@angular/material/icon';
-import {MatInputModule} from '@angular/material/input';
-import { MatFormFieldModule} from '@angular/material/form-field';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
 import { AddValuePipe } from './add-value.pipe';
 import { FilterComponent } from './filter/filter.component';
 import { MatCardModule } from "@angular/material/card";
+import { HomeComponent } from './home/home.component';
+import { AddNoteComponent } from './add-note/add-note.component';
+
 
 
 @NgModule({
@@ -24,7 +27,9 @@ import { MatCardModule } from "@angular/material/card";
     NoteComponent,
     ToolsComponent,
     AddValuePipe,
-    FilterComponent
+    FilterComponent,
+    HomeComponent,
+    AddNoteComponent
   ],
   imports: [
     BrowserModule,
@@ -37,6 +42,7 @@ import { MatCardModule } from "@angular/material/card";
     MatFormFieldModule,
     FormsModule,
     MatCardModule
+   
   ],
   providers: [],
   bootstrap: [AppComponent]
