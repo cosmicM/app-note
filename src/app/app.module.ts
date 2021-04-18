@@ -1,50 +1,61 @@
-import { NgModule } from '@angular/core';
+import { FilterService } from './services/filter.service';
 import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FirstTestComponent } from './first-test/first-test.component';
-import { TestModule } from './test/test.module';
 import { NoteComponent } from './note/note.component';
 import { ToolsComponent } from './tools/tools.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
-import { AddValuePipe } from './add-value.pipe';
+import { AddValuePipePipe } from './add-value-pipe.pipe';
+import { AppHighlightDirective } from './app-highlight.directive';
 import { FilterComponent } from './filter/filter.component';
-import { MatCardModule } from "@angular/material/card";
+import { MatCardModule } from '@angular/material/card';
 import { HomeComponent } from './home/home.component';
 import { AddNoteComponent } from './add-note/add-note.component';
-
-
+import { MatInputModule } from '@angular/material/input';
+import { NoteService } from './services/note.service';
+import { CommonModule } from '@angular/common';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpMockApiInterceptor } from './services/http-mock-api.interceptor';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [
     AppComponent,
-    FirstTestComponent,
     NoteComponent,
     ToolsComponent,
-    AddValuePipe,
+    AddValuePipePipe,
+    AppHighlightDirective,
     FilterComponent,
     HomeComponent,
-    AddNoteComponent
+    AddNoteComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    TestModule,
     MatButtonModule,
     MatIconModule,
-    MatInputModule,
     MatFormFieldModule,
     FormsModule,
-    MatCardModule
-   
+    MatCardModule,
+    MatInputModule,
+    CommonModule,
+    HttpClientModule,
+    MatSelectModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [NoteService, FilterService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpMockApiInterceptor,
+      multi: true
+    }
+  ],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

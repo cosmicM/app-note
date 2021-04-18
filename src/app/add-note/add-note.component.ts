@@ -1,5 +1,8 @@
+import { NoteService } from './../services/note.service';
+import { Category } from './../category';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { FilterService } from '../services/filter.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-note',
@@ -7,21 +10,20 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./add-note.component.scss']
 })
 export class AddNoteComponent implements OnInit {
+  title: string;
+  description: string;
+  categories: Category[];
+  idCategoryNote: string;
 
-  noteTitle: string="";
-  noteDescription: string="";
+  constructor(private filterService: FilterService, private noteService: NoteService, private router: Router) { }
 
-  constructor(private _router: Router, private _activatedRoute: ActivatedRoute) { }
+  ngOnInit() {
+    this.categories = this.filterService.getFilters();
+  }
 
-  ngOnInit(): void {
-    this._activatedRoute.queryParams.subscribe(params => {
-    this.noteTitle = params['title']; 
-    this.noteDescription = params['description'];
-  })
-}
-
-addNote(): void
-  {
-   alert(this.noteTitle + '\n' + this.noteDescription);
+  add() {
+    this.noteService.addNote(this.title, this.description, this.idCategoryNote);
+    // this.router.navigate(['']);
+    this.router.navigateByUrl('');
   }
 }

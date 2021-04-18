@@ -1,0 +1,26 @@
+.note-container {
+  display: flex;
+  flex-direction: row;
+  float: left;
+}
+.note {
+  width: 150px;
+  height: 150px;
+  float: left;
+  background-color: green;
+  margin: 20px 10px 20px 10px;
+}
+.action-container {
+  position: absolute;
+  bottom: 0px;
+}
+.action {
+  width : 10px;
+  height: 10px;
+  margin: 5px;
+}
+.delete_btn {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}

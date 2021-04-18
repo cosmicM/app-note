@@ -1,6 +1,3 @@
-<app-filter></app-filter>
-<app-first-test></app-first-test>
-<app-second-test></app-second-test>
+<app-filter (emitSelectedFilter)="receiveCategory($event)"></app-filter>
+<app-note [selectedCategoryId]="selectedCategoryId"></app-note>
 <app-tools></app-tools>
-<app-note></app-note>
-
