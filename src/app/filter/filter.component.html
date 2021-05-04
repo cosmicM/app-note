@@ -3,3 +3,6 @@
     <button (click)="selectFilter(category.id)" mat-raised-button color="primary">{{category.name | uppercase}}</button>
   </div>
 </div>
+<div>
+  <input id="search_title" type="text" /> <button (click)="filterByTitle('search_title')" mat-raised-button color="primary">Search</button>
+</div>

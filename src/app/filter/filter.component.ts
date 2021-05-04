@@ -14,10 +14,14 @@ export class FilterComponent implements OnInit {
   constructor(private filterService: FilterService) {}
 
   ngOnInit() {
-    this.categories = this.filterService.categories;
+    this.categories = this.filterService.getFilters();
   }
 
   selectFilter(categoryId: string) {
     this.emitSelectedFilter.emit(categoryId);
+  }
+
+  filterByTitle(search_filter_id: string) {
+    var searched_string = (document.getElementById(search_filter_id) as HTMLInputElement).value;
   }
 }

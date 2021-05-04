@@ -4,7 +4,7 @@ import { Category } from '../category';
 @Injectable()
 export class FilterService {
 
-  categories: Category[] = [
+ private categories: Category[] = [
     { name: 'To Do', id: '1' },
     { name: 'Done', id: '2' },
     { name: 'Doing', id: '3' },

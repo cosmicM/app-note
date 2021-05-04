@@ -7,7 +7,10 @@ import { Component, Input, OnChanges, OnInit } from '@angular/core';
   styleUrls: ['./note.component.scss'],
 })
 export class NoteComponent implements OnInit, OnChanges {
+
   @Input() selectedCategoryId: string;
+  @Input() searchedNoteTitle: string;
+
   notes: Note[];
 
   constructor(private noteService: NoteService) {}
@@ -24,6 +27,10 @@ export class NoteComponent implements OnInit, OnChanges {
 
   deleteNote(note_id: string) {
     document.getElementById(note_id).remove();
+  }
+
+  deleteNoteContent(note_content_id: string) {
+    document.getElementById(note_content_id).innerText = "";
   }
 }
 

@@ -7,7 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
   selectedCategoryId: string;
-
+  messageToSend: string;
+  
   constructor() {}
 
   ngOnInit() {}

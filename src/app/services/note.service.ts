@@ -27,6 +27,10 @@ export class NoteService {
     return this.httpClient.get<Note[]>(this.baseUrl+'/notes', this.httpOptions).pipe(map((notes) => notes.filter((note) => note.categoryId === categoryId)));
   }
 
+  getFilteredNotesByTitle(noteTitle: string): Observable<Note[]> {
+    return this.httpClient.get<Note[]>(this.baseUrl+'/notes', this.httpOptions).pipe(map((notes) => notes.filter((note) => note.categoryId === noteTitle)));
+  }
+
   addNote(noteTitle:string, noteDescription:string, noteCategoryId:string) {
     let note = {
       description: noteDescription,
