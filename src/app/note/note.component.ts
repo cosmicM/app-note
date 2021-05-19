@@ -12,6 +12,8 @@ export class NoteComponent implements OnInit, OnChanges {
   @Input() searchedNoteTitle: string;
 
   notes: Note[];
+  
+  ownerID = '00000000-0000-0000-0000-000000000007';
 
   constructor(private noteService: NoteService) {}
 
@@ -32,10 +34,16 @@ export class NoteComponent implements OnInit, OnChanges {
   deleteNoteContent(note_content_id: string) {
     document.getElementById(note_content_id).innerText = "";
   }
+
+  editNoteContent(note_content_id: string) {
+    var previous_text = document.getElementById(note_content_id).innerText;
+    document.getElementById(note_content_id).outerHTML = "<textarea id='" + note_content_id + "' class='edit_textarea' rows='5'>" + previous_text + "</textarea>";
+  }
 }
 
 export interface Note {
   id: string;
+  ownerID: string;
   title: string;
   description: string;
   categoryId: string;

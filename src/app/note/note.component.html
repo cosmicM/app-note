@@ -10,6 +10,7 @@
         {{ note.description }}
       </p>
       <button type="button" class="delete_btn" mat-icon-button (click)= "deleteNote(note.id)" title="Delete note">X</button>
+      <button type="button" class="edit_btn" mat-icon-button (click)= "editNoteContent(note.id + '_content')" title="Edit note"><mat-icon>edit</mat-icon></button>
       <button type="button" class="clear_btn" mat-icon-button (click)= "deleteNoteContent(note.id + '_content')" title="Clear note"><mat-icon>delete</mat-icon></button>
     </mat-card-content>
   </mat-card>
